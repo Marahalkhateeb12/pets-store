@@ -227,7 +227,7 @@
 <script>
 	$(document).ready(function(){
 		$("#sort").change(function(){
-			location.href = "store.php?category=11&name=Cat" + "&sort_value=" + $(this).val();
+			location.href = "store.php?category=<?php echo $_GET['category']?>&name=<?php  echo $_GET['name']?>" + "&sort_value=" + $(this).val();
 		});
 		$("#sort").val(<?php echo isset($_GET["sort_value"]) ? $_GET["sort_value"] : 0 ?>);
 	})
