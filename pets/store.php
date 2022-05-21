@@ -150,7 +150,7 @@
 						
 							<label>
 								Sort By:</label>
-								<select name='sort' class="input-select" onchange="Sort()" id='select'>
+								<select id='sort' class="input-select" >
 									<option value="0">Name , A-Z</option>
 									<option value="1">Price, low to high</option>
 									<option value="2">Price, high to low</option>
@@ -167,23 +167,22 @@
 					
 					$select_products ='';
 					$category_id = $_GET['category'];
-					if(isset($_GET['sort'])){
-					$value=$_GET['val'];}
+				$value = isset($_GET["sort_value"]) ? $_GET["sort_value"] : 0;
 				if($value =='0'){
 							
-					$select_products = $conn->prepare("SELECT * FROM `products` WHERE product_categorie_id=$category_id ORDER BY product_price ASC");
+					$select_products = $conn->prepare("SELECT * FROM `products` WHERE product_categorie_id=$category_id ORDER BY product_name ASC");
 					
 				}
 				else if($value=='1'){
-					$select_products = $conn->prepare("SELECT * FROM `products` WHERE product_categorie_id=$category_id ORDER BY product_price DESC");
+					$select_products = $conn->prepare("SELECT * FROM `products` WHERE product_categorie_id=$category_id ORDER BY product_price");
 					
 				}
 				else if($value=='2'){
-					$select_products = $conn->prepare("SELECT * FROM `products` WHERE product_categorie_id=$category_id ORDER BY product_name DESC");
+					$select_products = $conn->prepare("SELECT * FROM `products` WHERE product_categorie_id=$category_id ORDER BY product_price DESC");
 					
 				}
 				else{
-					$select_products = $conn->prepare("SELECT * FROM `products` WHERE product_categorie_id=$category_id ORDER BY product_name ASC");
+					$select_products = $conn->prepare("SELECT * FROM `products` WHERE product_categorie_id=$category_id ORDER BY product_name desc");
 					
 				}
 			
@@ -255,7 +254,6 @@
 		<!-- /container -->
 	</div>
 	<!-- /SECTION -->
-
 	<!-- jQuery Plugins -->
 	<script src="js/jquery.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
@@ -264,6 +262,14 @@
 	<script src="js/jquery.zoom.min.js"></script>
 	<script src="js/main.js"></script>
 
+<script>
+	$(document).ready(function(){
+		$("#sort").change(function(){
+			location.href = "store.php?category=11&name=Cat" + "&sort_value=" + $(this).val();
+		});
+		$("#sort").val(<?php echo isset($_GET["sort_value"]) ? $_GET["sort_value"] : 0 ?>);
+	})
+</script>
 </body>
 
 </html>
