@@ -69,47 +69,9 @@
 			<div class="row">
 				<!-- ASIDE -->
 				<div id="aside" class="col-md-3">
-					<!-- aside Widget -->
-					<div class="aside">
-						<h3 class="aside-title">Categories</h3>
-						<div class="checkbox-filter">
-							<?php
-							$sql = 'SELECT * FROM categories';
-							$statement = $conn->query($sql);
-							$data = $statement->fetchAll();
-							foreach ($data as $category) :
-							?>
+				
 
-								<div class="input-checkbox">
-									<input type="checkbox" id="<?php echo $category['category_id']; ?>">
-									<label for="<?php echo $category['category_id']; ?>">
-										<span></span>
-										<?php echo $category['category_name']; ?>
-										
-									</label>
-								</div>
-							<?php endforeach ?>
-
-						</div>
-					</div>
-					<!-- /aside Widget -->
-						<!-- aside Widget -->
-						<div class="aside">
-							<h3 class="aside-title">Price</h3>
-							<div class="price-filter">
-								<div id="price-slider"></div>
-								<div class="input-number price-min">
-									<input id="price-min" type="number">
-									
-								</div>
-								<span>-</span>
-								<div class="input-number price-max">
-									<input id="price-max" type="number">
-									
-								</div>
-							</div>
-						</div>
-						<!-- /aside Widget -->
+					
 
 					<!-- aside Widget -->
 					<div class="aside">
